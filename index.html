@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Campus Route Navigator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+  <header>
+    <h1>🏫 Campus Route Navigator</h1>
+    <p>Simulasi Rute Terpendek Antar Kampus  
+      <br><span>Dijkstra Algorithm & Binary Search Tree</span>
+    </p>
+  </header>
+
+  <section class="card">
+    <div class="section-title">🛣️ Tambah Jalur Kampus</div>
+
+    <input id="from" placeholder="Contoh: UMM">
+    <input id="to" placeholder="Contoh: UB">
+    <input id="weight" type="number" placeholder="Jarak (km)">
+    <button onclick="addEdge()">Tambah Jalur</button>
+
+    <div id="edges" class="list"></div>
+  </section>
+
+  <section class="card">
+    <div class="section-title">🧭 Cari Rute Terpendek</div>
+
+    <input id="start" placeholder="Titik Awal (UMM)">
+    <input id="end" placeholder="Tujuan (UB)">
+    <button onclick="findPath()">Cari Rute</button>
+  </section>
+
+  <section id="result"></section>
+
+  <footer>
+    <p>📌 Project UAS Algoritma Pemrograman</p>
+  </footer>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
