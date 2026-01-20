@@ -10,6 +10,7 @@ Campus Route Navigator memungkinkan pengguna:
 - Menambahkan jalur antar kampus beserta jaraknya
 - Menentukan titik awal dan tujuan
 - Menampilkan rute terpendek beserta total jarak
+- Menampilkan traversal data kampus menggunakan Binary Search Tree (InOrder, PreOrder, PostOrder)
 
 Aplikasi ini bersifat **interaktif**, dijalankan langsung di browser tanpa backend.
 
@@ -24,6 +25,12 @@ Implementasi dilakukan menggunakan struktur graph berbobot dan proses relaksasi 
 ### 2️⃣ Binary Search Tree (BST)
 Digunakan untuk menyimpan data lokasi kampus dalam struktur pohon biner terurut.  
 BST diimplementasikan untuk memenuhi studi kasus struktur data pohon.
+Traversal pohon biner digunakan untuk menampilkan urutan data kampus yang tersimpan dalam BST menggunakan:
+- InOrder
+- PreOrder
+- PostOrder
+
+Fitur ini membantu memvisualisasikan struktur pohon biner hasil penyimpanan data kampus.
 
 ---
 
@@ -91,4 +98,10 @@ Project ini dibuat untuk menyelesaikan project akhir mata kuliah algoritma pemro
 
 ---
 
+### 🔧 Update Fitur
+- Penambahan fitur traversal Binary Search Tree (BST)
+- Penambahan fitur tidak mengubah mekanisme pencarian rute terpendek
 
+
+
+---

@@ -1,62 +1,165 @@
+/* ===== GLOBAL ===== */
+* {
+  box-sizing: border-box;
+}
+
 body {
-  font-family: Arial, sans-serif;
-  background: #f4f6f8;
   margin: 0;
-  padding: 20px;
+  padding: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #1d2671, #c33764);
+  min-height: 100vh;
+  color: #333;
 }
 
 .app {
-  max-width: 700px;
-  margin: auto;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 30px 20px 50px;
 }
 
+/* ===== HEADER ===== */
 header {
   text-align: center;
-  margin-bottom: 20px;
+  color: #fff;
+  margin-bottom: 30px;
 }
 
+header h1 {
+  margin: 0;
+  font-size: 2.2rem;
+}
+
+header p {
+  margin-top: 8px;
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+header span {
+  font-weight: 600;
+}
+
+/* ===== CARD ===== */
 .card {
-  background: white;
-  padding: 16px;
-  border-radius: 10px;
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 20px;
   margin-bottom: 20px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  animation: fadeIn 0.4s ease;
 }
 
 .section-title {
-  font-weight: bold;
-  margin-bottom: 10px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #1d2671;
 }
 
+/* ===== INPUT ===== */
 input {
   width: 100%;
-  padding: 8px;
-  margin-bottom: 8px;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border 0.2s;
 }
 
+input:focus {
+  border-color: #1d2671;
+}
+
+/* ===== BUTTON ===== */
 button {
-  padding: 8px 12px;
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  background: linear-gradient(135deg, #1d2671, #c33764);
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 600;
   cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+}
+
+/* ===== EDGE LIST ===== */
+.list {
+  margin-top: 12px;
 }
 
 .list-item {
-  margin-top: 5px;
+  background: #f4f6fa;
+  padding: 8px 12px;
+  border-radius: 8px;
+  margin-bottom: 6px;
+  font-size: 0.9rem;
+}
+
+/* ===== RESULT ===== */
+#result {
+  margin-top: 10px;
 }
 
 .result-box {
-  background: #eef;
-  padding: 10px;
-  border-radius: 6px;
+  background: #eef1ff;
+  padding: 14px;
+  border-radius: 10px;
   margin-top: 10px;
+  font-size: 0.95rem;
+  line-height: 1.5;
 }
 
+.result-box p {
+  margin: 6px 0;
+}
+
+/* ===== ERROR ===== */
 .error {
-  color: red;
-  margin-top: 10px;
+  background: #ffe5e5;
+  color: #b00020;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 0.9rem;
 }
 
+/* ===== FOOTER ===== */
 footer {
   text-align: center;
-  color: #666;
-  font-size: 14px;
+  margin-top: 30px;
+  color: #eee;
+  font-size: 0.85rem;
+  opacity: 0.85;
+}
+
+/* ===== ANIMATION ===== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 1.7rem;
+  }
+
+  .card {
+    padding: 16px;
+  }
 }
