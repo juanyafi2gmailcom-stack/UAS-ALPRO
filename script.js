@@ -123,3 +123,50 @@ function findPath() {
     </div>
   `
 }
+
+/* ===== FITUR TAMBAHAN: BST TRAVERSAL (TANPA MENGUBAH KODE LAMA) ===== */
+
+function inOrderTraversal(node, result = []) {
+  if (node) {
+    inOrderTraversal(node.left, result)
+    result.push(node.key)
+    inOrderTraversal(node.right, result)
+  }
+  return result
+}
+
+function preOrderTraversal(node, result = []) {
+  if (node) {
+    result.push(node.key)
+    preOrderTraversal(node.left, result)
+    preOrderTraversal(node.right, result)
+  }
+  return result
+}
+
+function postOrderTraversal(node, result = []) {
+  if (node) {
+    postOrderTraversal(node.left, result)
+    postOrderTraversal(node.right, result)
+    result.push(node.key)
+  }
+  return result
+}
+
+function showBSTTraversal() {
+  if (!bst.root) {
+    document.getElementById("bstTraversal").innerHTML =
+      "<p>BST masih kosong</p>"
+    return
+  }
+
+  const inOrder = inOrderTraversal(bst.root).join(" → ")
+  const preOrder = preOrderTraversal(bst.root).join(" → ")
+  const postOrder = postOrderTraversal(bst.root).join(" → ")
+
+  document.getElementById("bstTraversal").innerHTML = `
+    <p><b>InOrder</b>: ${inOrder}</p>
+    <p><b>PreOrder</b>: ${preOrder}</p>
+    <p><b>PostOrder</b>: ${postOrder}</p>
+  `
+}
