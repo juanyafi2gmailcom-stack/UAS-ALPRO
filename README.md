@@ -61,24 +61,30 @@ Salin kode
 ---
 
 ## 🧪 Contoh Penggunaan
-**Tambah Jalur**
-UMM ↔ UB (6 km)
-UB ↔ POLINEMA (4 km)
+
+### Tambah Jalur
+UMM ↔ UB (6 km)  
+UB ↔ POLINEMA (4 km)  
 POLINEMA ↔ UIN (3 km)
 
-
-**Cari Rute**
-
-
-Start: UMM
-End: UIN
-
+### Cari Rute
+Start: UMM  
+End: UIN  
 
 **Hasil**
-
-
-UMM → UB → POLINEMA → UIN
+UMM → UB → POLINEMA → UIN  
 Total Jarak: 13 km
+
+### Traversal BST
+**InOrder**
+POLINEMA → UIN → UB → UMM
+
+**PreOrder**
+UMM → POLINEMA → UB → UIN
+
+**PostOrder**
+UIN → UB → POLINEMA → UMM
+
 
 
 ---
