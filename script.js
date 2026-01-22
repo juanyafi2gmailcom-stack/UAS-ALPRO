@@ -22,7 +22,14 @@ class BinarySearchTree {
     else if (key > node.key) node.right = this._insert(node.right, key)
     return node
   }
+  
+  search(node, key) {
+    if (node === null || node.key === key) return node;
+    if (key < node.key) return this.search(node.left, key);
+    return this.search(node.right, key);
+  }
 }
+
 
 /* ===== GRAPH + DIJKSTRA ===== */
 class Graph {
@@ -124,6 +131,7 @@ function findPath() {
   `
 }
 
+<<<<<<< Updated upstream
 /* ===== FITUR TAMBAHAN: BST TRAVERSAL (TANPA MENGUBAH KODE LAMA) ===== */
 
 function inOrderTraversal(node, result = []) {
@@ -169,4 +177,16 @@ function showBSTTraversal() {
     <p><b>PreOrder</b>: ${preOrder}</p>
     <p><b>PostOrder</b>: ${postOrder}</p>
   `
+=======
+function searchCampus() {
+  const query = document.getElementById("searchNode").value.trim();
+  const resultDiv = document.getElementById("searchResult");
+  const found = bst.search(bst.root, query); // Menggunakan fungsi search yang baru dibuat
+
+  if (found) {
+    resultDiv.innerHTML = `<div class="list-item" style="background: #dcfce7;">✅ Kampus "${query}" ditemukan.</div>`;
+  } else {
+    resultDiv.innerHTML = `<div class="list-item" style="background: #fee2e2;">❌ Kampus "${query}" tidak ada.</div>`;
+  }
+>>>>>>> Stashed changes
 }
