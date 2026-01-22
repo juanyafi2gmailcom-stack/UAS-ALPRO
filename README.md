@@ -90,10 +90,10 @@ UIN → UB → POLINEMA → UMM
 ---
 
 ## 👨‍👩‍👦 Anggota Kelompok
-- Niko
-- Putu
-- Furqan
-- Juan
+- Sultan Ibrahim Niko (202410370110455)
+- Putu Bawa GIvrant Januarta (202410370110474)
+- Muhammad Alifurqan Ramadan (202010370312202)
+- M Juan Yafi Zaim Wibisono (202410370110258)
 
 ---
 
