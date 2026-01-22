@@ -130,8 +130,6 @@ function findPath() {
     </div>
   `
 }
-
-<<<<<<< Updated upstream
 /* ===== FITUR TAMBAHAN: BST TRAVERSAL (TANPA MENGUBAH KODE LAMA) ===== */
 
 function inOrderTraversal(node, result = []) {
@@ -177,7 +175,7 @@ function showBSTTraversal() {
     <p><b>PreOrder</b>: ${preOrder}</p>
     <p><b>PostOrder</b>: ${postOrder}</p>
   `
-=======
+}
 function searchCampus() {
   const query = document.getElementById("searchNode").value.trim();
   const resultDiv = document.getElementById("searchResult");
@@ -188,5 +186,51 @@ function searchCampus() {
   } else {
     resultDiv.innerHTML = `<div class="list-item" style="background: #fee2e2;">❌ Kampus "${query}" tidak ada.</div>`;
   }
->>>>>>> Stashed changes
+}
+
+/* ===== FITUR RIWAYAT PENCARIAN ===== */
+const historyList = [];
+
+function updateHistoryUI() {
+  const historyDiv = document.getElementById("searchHistory");
+  if (historyList.length === 0) {
+    historyDiv.innerHTML = '<p style="color: #94a3b8; font-size: 12px;">Belum ada riwayat pencarian.</p>';
+    return;
+  }
+
+  historyDiv.innerHTML = historyList.map((item, index) => `
+    <div class="list-item" style="border-left: 4px solid #6366f1; margin-bottom: 5px;">
+      <small>${item.time}</small><br>
+      <b>${item.route}</b> — ${item.distance}
+    </div>
+  `).join("");
+}
+
+function clearHistory() {
+  historyList.length = 0;
+  updateHistoryUI();
+}
+
+// Modifikasi fungsi findPath yang sudah ada
+const originalFindPath = findPath; 
+findPath = function() {
+  originalFindPath(); // Jalankan fungsi asli
+
+  const start = document.getElementById("start").value.trim();
+  const end = document.getElementById("end").value.trim();
+  const result = graph.dijkstra(start, end);
+
+  if (result.path.length > 0 && result.distance !== Infinity) {
+    const now = new Date().toLocaleTimeString();
+    historyList.unshift({
+      time: now,
+      route: `${start} → ${end}`,
+      distance: `${result.distance} km`
+    });
+    
+    // Riwayat Maks.5
+    if (historyList.length > 5) historyList.pop();
+    
+    updateHistoryUI();
+  }
 }
