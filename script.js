@@ -22,7 +22,14 @@ class BinarySearchTree {
     else if (key > node.key) node.right = this._insert(node.right, key)
     return node
   }
+  
+  search(node, key) {
+    if (node === null || node.key === key) return node;
+    if (key < node.key) return this.search(node.left, key);
+    return this.search(node.right, key);
+  }
 }
+
 
 /* ===== GRAPH + DIJKSTRA ===== */
 class Graph {
@@ -122,4 +129,108 @@ function findPath() {
       <p>Total Jarak: ${result.distance} km</p>
     </div>
   `
+}
+/* ===== FITUR TAMBAHAN: BST TRAVERSAL (TANPA MENGUBAH KODE LAMA) ===== */
+
+function inOrderTraversal(node, result = []) {
+  if (node) {
+    inOrderTraversal(node.left, result)
+    result.push(node.key)
+    inOrderTraversal(node.right, result)
+  }
+  return result
+}
+
+function preOrderTraversal(node, result = []) {
+  if (node) {
+    result.push(node.key)
+    preOrderTraversal(node.left, result)
+    preOrderTraversal(node.right, result)
+  }
+  return result
+}
+
+function postOrderTraversal(node, result = []) {
+  if (node) {
+    postOrderTraversal(node.left, result)
+    postOrderTraversal(node.right, result)
+    result.push(node.key)
+  }
+  return result
+}
+
+function showBSTTraversal() {
+  if (!bst.root) {
+    document.getElementById("bstTraversal").innerHTML =
+      "<p>BST masih kosong</p>"
+    return
+  }
+
+  const inOrder = inOrderTraversal(bst.root).join(" → ")
+  const preOrder = preOrderTraversal(bst.root).join(" → ")
+  const postOrder = postOrderTraversal(bst.root).join(" → ")
+
+  document.getElementById("bstTraversal").innerHTML = `
+    <p><b>InOrder</b>: ${inOrder}</p>
+    <p><b>PreOrder</b>: ${preOrder}</p>
+    <p><b>PostOrder</b>: ${postOrder}</p>
+  `
+}
+function searchCampus() {
+  const query = document.getElementById("searchNode").value.trim();
+  const resultDiv = document.getElementById("searchResult");
+  const found = bst.search(bst.root, query); // Menggunakan fungsi search yang baru dibuat
+
+  if (found) {
+    resultDiv.innerHTML = `<div class="list-item" style="background: #dcfce7;">✅ Kampus "${query}" ditemukan.</div>`;
+  } else {
+    resultDiv.innerHTML = `<div class="list-item" style="background: #fee2e2;">❌ Kampus "${query}" tidak ada.</div>`;
+  }
+}
+
+/* ===== FITUR RIWAYAT PENCARIAN ===== */
+const historyList = [];
+
+function updateHistoryUI() {
+  const historyDiv = document.getElementById("searchHistory");
+  if (historyList.length === 0) {
+    historyDiv.innerHTML = '<p style="color: #94a3b8; font-size: 12px;">Belum ada riwayat pencarian.</p>';
+    return;
+  }
+
+  historyDiv.innerHTML = historyList.map((item, index) => `
+    <div class="list-item" style="border-left: 4px solid #6366f1; margin-bottom: 5px;">
+      <small>${item.time}</small><br>
+      <b>${item.route}</b> — ${item.distance}
+    </div>
+  `).join("");
+}
+
+function clearHistory() {
+  historyList.length = 0;
+  updateHistoryUI();
+}
+
+// Modifikasi fungsi findPath yang sudah ada
+const originalFindPath = findPath; 
+findPath = function() {
+  originalFindPath(); // Jalankan fungsi asli
+
+  const start = document.getElementById("start").value.trim();
+  const end = document.getElementById("end").value.trim();
+  const result = graph.dijkstra(start, end);
+
+  if (result.path.length > 0 && result.distance !== Infinity) {
+    const now = new Date().toLocaleTimeString();
+    historyList.unshift({
+      time: now,
+      route: `${start} → ${end}`,
+      distance: `${result.distance} km`
+    });
+    
+    // Riwayat Maks.5
+    if (historyList.length > 5) historyList.pop();
+    
+    updateHistoryUI();
+  }
 }

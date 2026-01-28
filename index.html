@@ -27,6 +27,13 @@
   </section>
 
   <section class="card">
+    <div class="section-title">🔍 Cek Ketersediaan Kampus (BST)</div>
+    <input id="searchNode" placeholder="Masukkan nama kampus...">
+    <button onclick="searchCampus()">Cek Kampus</button>
+    <div id="searchResult" class="list"></div>
+  </section>
+
+  <section class="card">
     <div class="section-title">🧭 Cari Rute Terpendek</div>
 
     <input id="start" placeholder="Titik Awal (UMM)">
@@ -34,7 +41,22 @@
     <button onclick="findPath()">Cari Rute</button>
   </section>
 
+  <section class="card">
+  <div class="section-title">📜 Riwayat Pencarian</div>
+  <div id="searchHistory" class="list">
+    <p style="color: #94a3b8; font-size: 12px;">Belum ada riwayat pencarian.</p>
+  </div>
+  <button onclick="clearHistory()" style="background: #94a3b8; margin-top: 10px; padding: 8px;">Hapus Riwayat</button>
+  </section>
+
   <section id="result"></section>
+
+  <!-- ===== FITUR TAMBAHAN (BST TRAVERSAL) ===== -->
+  <section class="card">
+    <div class="section-title">🌳 Traversal Data Kampus (BST)</div>
+    <button onclick="showBSTTraversal()">Tampilkan Traversal</button>
+    <div id="bstTraversal" class="result-box"></div>
+  </section>
 
   <footer>
     <p>📌 Project UAS Algoritma Pemrograman</p>
